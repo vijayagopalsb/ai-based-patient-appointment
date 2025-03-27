@@ -15,6 +15,8 @@ import numpy as np           # For numerical operations (e.g., array handling)
 import joblib                # For loading saved model and preprocessing objects
 from datetime import datetime  # For generating current date for appointments
 
+# Import App Libraries
+from logging_config import logger
 
 class AppointmentPredictor:
     """
@@ -159,9 +161,10 @@ class AppointmentPredictor:
         }
 
         # Print the appointment details in a readable format
-        print("\nAppointment Details:")
+        
+        logger.info("Appointment Details:")
         for key, value in appointment_details.items():
-            print(f"{key}: {value}")
+            logger.info(f"{key}: {value}")
         return appointment_details
 
 

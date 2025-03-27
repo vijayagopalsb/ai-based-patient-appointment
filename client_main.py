@@ -2,6 +2,7 @@
 
 # Import App Libraries
 from predictor.appointment_predictor import AppointmentPredictor
+from logging_config import logger
 
 # Example usage (can be removed in production)
 if __name__ == "__main__":
@@ -112,12 +113,17 @@ if __name__ == "__main__":
         }
     ]
     
+    logger.info(f"Starting patient appointment demo...")
+    
     # Create an instance of the predictor and test it
     predictor = AppointmentPredictor()
     
     # Example usage: Print each patient's name and disease
     for patient in patients:
         doctors = predictor.predict_doctors(patient)
-        print("Predicted Doctors:", doctors)
+        logger.info(f"Predicted Doctors: {doctors}")
         predictor.get_appointment(patient)
+     
+    logger.info(f"Successfully completed patient appointment demo ...")   
+        
     

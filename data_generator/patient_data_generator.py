@@ -7,10 +7,13 @@
 # training or testing machine learning models in healthcare applications. #
 ###########################################################################
 
+# Import Libraries
 import pandas as pd
-import numpy as np
-from faker import Faker
 import random
+from faker import Faker
+
+# Import Logger
+from logging_config import logger
 
 class PatientDataGenerator:
     """A class to generate synthetic patient data with realistic attributes."""
@@ -133,7 +136,7 @@ class PatientDataGenerator:
 
         # Save the DataFrame to a CSV file
         df.to_csv(output_file, index=False, encoding="utf-8")
-        print(f"Dataset with {n_records} records generated and saved to {output_file}!")
+        logger.info(f"Dataset with {n_records} records generated and saved to {output_file}!")
 
         return df
 
@@ -141,4 +144,4 @@ class PatientDataGenerator:
 if __name__ == "__main__":
     generator = PatientDataGenerator()
     df = generator.generate_synthetic_data(n_records=100, output_file="synthetic_patient_data_small.csv")
-    print(df.head())  # Display the first 5 rows for verification
+    logger.info(df.head())  # Display the first 5 rows for verification

@@ -13,6 +13,9 @@ from sklearn.preprocessing import LabelEncoder, StandardScaler
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.feature_selection import SelectKBest, f_classif
 
+# Custom App Libraries
+from logging_config import logger
+
 class DataPreprocessor:
     """
     A class to preprocess patient data for machine learning model training.
@@ -145,7 +148,7 @@ if __name__ == "__main__":
     X, y, scaler, tfidf, le_dict, selector, all_doctors = preprocessor.preprocess_data(df)
     
     # Print some results for verification
-    print("Preprocessed Features Shape:", X.shape)
-    print("Selected Features:", X.columns.tolist())
-    print("Target Shape:", y.shape)
-    print("Unique Doctors:", all_doctors)
+    logger.info("Preprocessed Features Shape:", X.shape)
+    logger.info("Selected Features:", X.columns.tolist())
+    logger.info("Target Shape:", y.shape)
+    logger.info("Unique Doctors:", all_doctors)

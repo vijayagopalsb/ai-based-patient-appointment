@@ -20,9 +20,11 @@ from sklearn.metrics import classification_report, accuracy_score
 # Import your preprocessor class
 #from ..preprocessor.data_preprocessor import DataPreprocessor
 
+# Import App Libraries
 # Add project root to sys.path to resolve module imports
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
-from data_preprocessor.data_preprocessor import DataPreprocessor  # Absolute import   
+from data_preprocessor.data_preprocessor import DataPreprocessor  # Absolute import  
+from  logging_config import logger
 
 class ModelTrainer:
     """
@@ -78,19 +80,19 @@ class ModelTrainer:
         grid_search = GridSearchCV(model, param_grid, cv=5, scoring='f1_micro', n_jobs=-1)
         grid_search.fit(X_train, y_train)  # Fit the grid search to find the best model
         model = grid_search.best_estimator_  # Use the best model found
-        print(f"Best Parameters: {grid_search.best_params_}")  # Display the optimal hyperparameters
+        logger.info(f"Best Parameters: {grid_search.best_params_}")  # Display the optimal hyperparameters
 
         # --- Cross-Validation ---
         # Evaluate the model with 5-fold cross-validation on the training set
         cv_scores = cross_val_score(model, X_train, y_train, cv=5, scoring='f1_micro')
-        print(f"Cross-Validation F1 Score: {cv_scores.mean():.2f} (±{cv_scores.std():.2f})")  # Mean and std of F1 scores
+        logger.info(f"Cross-Validation F1 Score: {cv_scores.mean():.2f} (±{cv_scores.std():.2f})")  # Mean and std of F1 scores
 
         # --- Training Performance ---
         # Predict on the training set to assess overfitting
         y_train_pred = model.predict(X_train)
         # Calculate micro-averaged F1 score for training data, handling zero division
         train_f1 = classification_report(y_train, y_train_pred, output_dict=True, zero_division=0)['micro avg']['f1-score']
-        print(f"Training F1 Score: {train_f1:.2f}")
+        logger.info(f"Training F1 Score: {train_f1:.2f}")
 
         # --- Test Performance ---
         # Predict on the test set to evaluate generalization
@@ -99,11 +101,11 @@ class ModelTrainer:
         accuracy = accuracy_score(y_test, y_pred)
         # Calculate micro-averaged F1 score for test data
         test_f1 = classification_report(y_test, y_pred, output_dict=True, zero_division=0)['micro avg']['f1-score']
-        print(f"Test Accuracy: {accuracy:.2f}")
-        print(f"Test F1 Score: {test_f1:.2f}")
+        logger.info(f"Test Accuracy: {accuracy:.2f}")
+        logger.info(f"Test F1 Score: {test_f1:.2f}")
         # Print detailed classification report for each doctor specialization
-        print("Test Classification Report:")
-        print(classification_report(y_test, y_pred, target_names=y.columns, zero_division=0))
+        logger.info("Test Classification Report:")
+        logger.info(classification_report(y_test, y_pred, target_names=y.columns, zero_division=0))
 
         # --- Save Model and Preprocessing Objects ---
         # Save the trained model to a file
@@ -117,9 +119,9 @@ class ModelTrainer:
                 "selector": selector,
                 "doctors": y.columns
             }, "preprocessing_objects.pkl")
-            print("Model and preprocessing objects saved!")
+            logger.info("Model and preprocessing objects saved!")
         else:
-            print("Model saved! Preprocessing objects not saved due to missing arguments.")
+            logger.info("Model saved! Preprocessing objects not saved due to missing arguments.")
 
         return model
 

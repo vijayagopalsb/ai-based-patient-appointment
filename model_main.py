@@ -34,13 +34,20 @@ from data_preprocessor.data_preprocessor import DataPreprocessor  # Absolute imp
 from data_generator.patient_data_generator import PatientDataGenerator
 from data_preprocessor.data_preprocessor import DataPreprocessor
 from model_trainer.model_trainer import ModelTrainer
+from logging_config import logger
 
 # --- Main Execution ---
 if __name__ == "__main__":
     
+    NUMBER_OF_PATIENT_RECORDS = 10000
+    
+    logger.info("-"*80)
+    logger.info("Starting Project ...")
+
     # Generate data
+    logger.info(f"Generating \"{NUMBER_OF_PATIENT_RECORDS}\" Synthetic Patient Data ...")
     patient_data_generator = PatientDataGenerator()
-    dataframe = patient_data_generator.generate_synthetic_data(10000)
+    dataframe = patient_data_generator.generate_synthetic_data(NUMBER_OF_PATIENT_RECORDS)
     
     data_preprocessor = DataPreprocessor()
     X, y, scaler, tfidf, le_dict, selector, all_doctors = data_preprocessor.preprocess_data(dataframe)
@@ -51,3 +58,4 @@ if __name__ == "__main__":
     # Train and evaluate the model
     model = trainer.train_and_evaluate(X, y, scaler, tfidf, le_dict, selector)
     
+    logger.info("Successfully Completed Model Training and Testing...\n")
