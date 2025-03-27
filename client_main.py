@@ -1,4 +1,4 @@
-# File: main.py
+# File: client_main.py
 
 # Import App Libraries
 from predictor.appointment_predictor import AppointmentPredictor

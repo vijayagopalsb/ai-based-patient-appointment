@@ -1,4 +1,4 @@
-# File: patient_data_generator.py
+# File: data_generator/patient_data_generator.py
 
 ###########################################################################
 # Patient Data Generator Class                                            #
