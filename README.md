@@ -1,5 +1,91 @@
-# ai-based-patient-appointment
-This project aims to develop an AI-powered system for scheduling patient appointments based on medical history, symptoms, and doctor availability. It includes synthetic dataset generation, exploratory data analysis (EDA), and a machine learning model to predict consultation chains, optimizing healthcare workflow for efficient patient care. 
+# AI-Based Patient Appointment System
+
+## Overview
+
+The **AI-Based Patient Appointment System** is a machine learning-driven solution that predicts the required medical specialists based on patient data. The system uses synthetic patient data, preprocesses it, trains a predictive model, and provides recommendations for doctor appointments. 
+
+## Features
+
+- Synthetic Data Generation: Generates realistic patient data for model training.
+
+- Data Preprocessing: Cleans and transforms raw data for machine learning.
+
+- Model Training: Builds and trains a predictive model using scikit-learn.
+
+- Doctor Prediction: Predicts the required doctor based on patient input.
+
+- Logging Mechanism: Tracks system operations and errors.
+
+## Project Structure
+
+<pre>
+AI-Based-Patient-Appointment/
+│── data_generator/
+│   └── patient_data_generator.py  # Generates synthetic patient data
+│── data_preprocessor/
+│   └── data_preprocessor.py       # Preprocesses raw patient data
+│── model_trainer/
+│   └── model_trainer.py           # Trains machine learning model
+│── predictor/
+│   └── appointment_predictor.py   # Predicts doctor based on patient input
+│── model_main.py                  # Main script to train and save model
+│── client_main.py                  # Client interface for making predictions
+│── logging_config.py               # Logging configuration for system events
+│── preprocessing_objects.pkl       # Saved preprocessing objects (scaler, encoders, etc.)
+│── synthetic_patient_data.csv      # Generated patient dataset
+│── trained_appointment_model.pkl   # Trained ML model
+│── README.md                      # Project documentation
+</pre>
+
+## Installation & Setup
+
+### Prerequisites
+
+Ensure you have the following installed:
+
+- Python 3.10+
+
+- Required Python libraries:
+
+```python
+pip install pandas numpy scikit-learn joblib faker
+```
+## Running the System
+
+1. Generate Patient Data
+
+```python
+python data_generator/patient_data_generator.py
+```
+
+2. Preprocess Data
+
+```python
+python data_preprocessor/data_preprocessor.py
+```
+
+3. Train the Model
+
+```python
+python model_trainer/model_trainer.py
+```
+
+4. Run Model
+
+```python
+python model_main.py
+```
+
+4. Run Predictions
+
+```python
+python client_main.py
+```
+
+## Logging
+The system logs critical information and errors using `logging_config.py`. Logs are stored in the `logs/` directory.
+
+## Output
 
 <pre>
 2025-03-27 19:38:21,768 - INFO ->>> --------------------------------------------------------------------------------
@@ -56,3 +142,12 @@ Gastroenterologist       0.98      0.98      0.98       207
 2025-03-27 19:39:13,068 - INFO ->>> Successfully completed patient appointment demo ...
 
 </pre>
+
+
+## Contributors
+
+- Vijayagopal S - [GitHub](https://github.com/vijayagopalsb)
+
+## License
+
+This project is licensed under the Apache License 2.0.
