@@ -19,3 +19,12 @@ diseases = {
 # It is very easy to add more diseases and their corresponding specialists here
 # Simply follow the format: "Disease Name": ["Specialist"]
 
+# Define possible values for categorical fields
+genders = ["Male", "Female", "Other"]
+blood_groups = ["A+", "A-", "B+", "B-", "O+", "O-", "AB+", "AB-"]
+consultation_types = ["Online", "In-person"]
+severity_levels = ["Mild", "Moderate", "Severe"]
+activity_levels = ["Sedentary", "Active", "Highly Active"]
+dietary_preferences = ["Vegetarian", "Non-Vegetarian", "Vegan"]
+insurance_providers = ["None", "MediCare", "HealthFirst", "Aetna", "Blue Cross"]
+
