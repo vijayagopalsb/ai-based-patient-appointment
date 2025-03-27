@@ -143,6 +143,12 @@ Gastroenterologist       0.98      0.98      0.98       207
 
 </pre>
 
+## Documentation
+
+📚 **Documentation**
+- [Setup Guide](docs/setup.md)
+- [Model Training](docs/training.md)
+
 
 ## Contributors
 
