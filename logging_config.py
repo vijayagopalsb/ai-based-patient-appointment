@@ -8,7 +8,7 @@ import logging
 logging.basicConfig(level=logging.INFO, 
                     format="%(asctime)s - %(levelname)s ->>> %(message)s",
                     handlers=[
-                        logging.FileHandler("log_file/ai_patient_appointment.log"), # Save logs to a file
+                        logging.FileHandler("logs/ai_patient_appointment.log"), # Save logs to a file
                         logging.StreamHandler() # Print logs to a console
                     ])
 

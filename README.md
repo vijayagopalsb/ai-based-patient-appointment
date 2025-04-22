@@ -1,4 +1,5 @@
-# AI-Based Patient Appointment System
+# MediSched AI
+## An AI-Based Patient Appointment System
 
 ## Overview
 
