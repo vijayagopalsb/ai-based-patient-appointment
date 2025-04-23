@@ -1,8 +1,9 @@
 # File: client_main.py
 
 # Import App Libraries
-from predictor.appointment_predictor import AppointmentPredictor
-from logging_config import logger
+from src.predictor.appointment_predictor import AppointmentPredictor
+from src.utils.logging_config import logger
+from src.utils.config import Config
 
 # Example usage (can be removed in production)
 if __name__ == "__main__":
@@ -116,12 +117,13 @@ if __name__ == "__main__":
     logger.info(f"Starting patient appointment demo...")
     
     # Create an instance of the predictor and test it
-    predictor = AppointmentPredictor()
+    predictor = AppointmentPredictor(model_path=Config.MODEL_PATH_NAME,preprocessing_path=Config.PREPROCESSING_OBJECTS_PATH)
     
     # Example usage: Print each patient's name and disease
     for patient in patients:
         doctors = predictor.predict_doctors(patient)
-        logger.info(f"Predicted Doctors: {doctors}")
+        
+        logger.info(f"\n\nPredicted Doctors: {doctors}")
         predictor.get_appointment(patient)
      
     logger.info(f"Successfully completed patient appointment demo ...")   
