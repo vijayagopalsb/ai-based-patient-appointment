@@ -81,7 +81,7 @@ def plot_doctor_workload():
     plt.title("Doctor Workload Analysis")
     plt.xlabel("Specialization")
     plt.ylabel("Number of Appointments")
-    plt.xticks(rotation=45)
+    plt.xticks(rotation=15)
     logger.info("Saved Dr_workload Plot to output_images/eda directory")
     plt.savefig("output_images/eda/dr_workload.png")
     
