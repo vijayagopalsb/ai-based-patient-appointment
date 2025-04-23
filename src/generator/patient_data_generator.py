@@ -1,13 +1,16 @@
-# File: data_generator/patient_data_generator.py
+# File: src/generator/patient_data_generator.py
 
-###########################################################################
-# Patient Data Generator Class                                            #
-#                                                                         #
-# This module defines a class to generate synthetic patient data for      #
-# training or testing machine learning models in healthcare applications. #
-###########################################################################
+
+# Patient Data Generator Class                                            
+#                                                                         
+# This module defines a class to generate synthetic patient data for      
+# training or testing machine learning models in healthcare applications. 
 
 # Import Libraries
+
+import sys
+import os
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..')))
 import pandas as pd
 import random
 from faker import Faker
@@ -45,16 +48,24 @@ class PatientDataGenerator:
         self.activity_levels = ["Sedentary", "Active", "Highly Active"]
         self.dietary_preferences = ["Vegetarian", "Non-Vegetarian", "Vegan"]
 
+        # Define hypothetical symptoms
+        self.disease_symptoms_map = {
+            "Hypertension": ["headache", "dizziness", "blurred vision"],
+            "Diabetes": ["increased thirst", "frequent urination", "fatigue"],
+            "Asthma": ["shortness of breath", "wheezing", "chest tightness"],
+            "Migraine": ["severe headache", "nausea", "sensitivity to light"],
+            "Arthritis": ["joint pain", "stiffness", "swelling"],
+            "Heart Disease": ["chest pain", "shortness of breath", "fatigue"],
+            "Pneumonia": ["cough", "fever", "difficulty breathing"],
+            "Depression": ["sadness", "loss of interest", "fatigue"],
+            "Skin Allergy": ["rash", "itching", "redness"],
+            "Gastroenteritis": ["diarrhea", "vomiting", "abdominal cramps"]
+        }
+
+
     def generate_synthetic_data(self, n_records=10000, output_file="synthetic_patient_data.csv"):
         """
         Generate synthetic patient data and save it to a CSV file.
-
-        Args:
-            n_records (int): Number of patient records to generate (default: 10000).
-            output_file (str): Path to save the generated CSV file (default: "synthetic_patient_data.csv").
-
-        Returns:
-            pd.DataFrame: DataFrame containing the generated synthetic patient data.
         """
         data = []  # List to store patient records
 
@@ -99,7 +110,11 @@ class PatientDataGenerator:
             doctor_availability = random.choice(["Available", "Busy", "Limited Slots"])  # Doctor availability status
             consultation_type = random.choice(self.consultation_types)  # Online or In-person
             hospital_clinic_name = self.faker.company()  # Random hospital/clinic name
-            symptoms = self.faker.sentence(nb_words=6)  # Random 6-word symptom description
+            # Use mapped symptoms instead of faker
+            possible_symptoms = self.disease_symptoms_map[disease]
+            symptoms = ", ".join(random.sample(possible_symptoms, k=min(3, len(possible_symptoms))))
+            # symptoms = self.faker.sentence(nb_words=6)  # Random 6-word symptom description
+            logger.info(symptoms)
             disease_severity_level = random.choice(self.severity_levels)  # Severity level
             diagnosis_date = self.faker.date_this_decade()  # Random date in the last decade
             lab_test_results = random.choice(["Normal", "Abnormal", "Borderline"])  # Lab test outcome
@@ -140,8 +155,8 @@ class PatientDataGenerator:
 
         return df
 
-# Example usage
+# Module tesing 
 if __name__ == "__main__":
     generator = PatientDataGenerator()
-    df = generator.generate_synthetic_data(n_records=100, output_file="synthetic_patient_data_small.csv")
+    df = generator.generate_synthetic_data(n_records=100, output_file="data/synthetic_patient_data_small.csv")
     logger.info(df.head())  # Display the first 5 rows for verification

@@ -190,6 +190,14 @@ Predicted Doctors: ['Neurologist']
 </pre>
 
 
+### Future Enhancements
+
+- Integrate XGBoost or LightGBM for better performance.
+
+- Experiment with multi-label neural networks (Keras/PyTorch).
+
+- Add model interpretability using SHAP or LIME.
+
 
 ## Contributors
 

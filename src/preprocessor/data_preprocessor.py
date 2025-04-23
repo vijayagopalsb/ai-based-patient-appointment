@@ -1,4 +1,4 @@
-# File: data_preprocessor/data_preprocessor.py
+# File: src/preprocessor/data_preprocessor.py
 
 #
 # Data Preprocessor Class                                                 
@@ -8,6 +8,10 @@
 # TF-IDF transformation, and multi-label target preparation.             
 #
 
+
+import sys
+import os
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..')))
 import pandas as pd
 from sklearn.preprocessing import LabelEncoder, StandardScaler
 from sklearn.feature_extraction.text import TfidfVectorizer
@@ -15,6 +19,7 @@ from sklearn.feature_selection import SelectKBest, f_classif
 
 # Custom App Libraries
 from src.utils.logging_config import logger
+from src.utils.config import Config
 
 class DataPreprocessor:
     """
@@ -118,7 +123,7 @@ class DataPreprocessor:
 # Example usage
 if __name__ == "__main__":
     # Load synthetic data for testing
-    df = pd.read_csv("synthetic_patient_data.csv")
+    df = pd.read_csv(Config.SYNTHETIC_DATA)
     
     # Create an instance of the preprocessor
     preprocessor = DataPreprocessor()
@@ -127,7 +132,7 @@ if __name__ == "__main__":
     X, y, scaler, tfidf, le_dict, selector, all_doctors = preprocessor.preprocess_data(df)
     
     # Print some results for verification
-    logger.info("Preprocessed Features Shape:", X.shape)
-    logger.info("Selected Features:", X.columns.tolist())
-    logger.info("Target Shape:", y.shape)
-    logger.info("Unique Doctors:", all_doctors)
+    logger.info(f"Preprocessed Features Shape: {X.shape}")
+    logger.info(f"Selected Features: {X.columns.tolist()}")
+    logger.info(f"Target Shape: {y.shape}")
+    logger.info(f"Unique Doctors: {all_doctors}")
