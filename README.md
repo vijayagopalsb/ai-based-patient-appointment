@@ -28,22 +28,28 @@ The **AI-Based Patient Appointment System** is a machine learning-driven solutio
 ## Project Structure
 
 <pre>
-AI-Based-Patient-Appointment/
-│── data_generator/
-│   └── patient_data_generator.py  # Generates synthetic patient data
-│── data_preprocessor/
-│   └── data_preprocessor.py       # Preprocesses raw patient data
-│── model_trainer/
-│   └── model_trainer.py           # Trains machine learning model
-│── predictor/
-│   └── appointment_predictor.py   # Predicts doctor based on patient input
-│── model_main.py                  # Main script to train and save model
-│── client_main.py                  # Client interface for making predictions
-│── logging_config.py               # Logging configuration for system events
-│── preprocessing_objects.pkl       # Saved preprocessing objects (scaler, encoders, etc.)
-│── synthetic_patient_data.csv      # Generated patient dataset
-│── trained_appointment_model.pkl   # Trained ML model
-│── README.md                      # Project documentation
+
+ai-based-patient-appointment/
+├── data/
+│   └── synthetic_patient_data.csv
+├── notebooks/
+│   └── exploratory_analysis.ipynb
+├── src/
+│   ├── eda/
+│   │   └── eda_analysis.py
+│   ├── generator/
+│   │   └── patient_data_generator.py
+│   ├── preprocessor/
+│   │   └── data_preprocessor.py
+│   ├── trainer/
+│   │   └── model_trainer.py
+│   └── utils/
+│       ├── config.py
+│       └── logging_config.py
+├── model_main.py
+├── requirements.txt
+└── README.md
+
 </pre>
 
 ## Installation & Setup
@@ -97,58 +103,89 @@ The system logs critical information and errors using `logging_config.py`. Logs 
 ## Output
 
 <pre>
-2025-03-27 19:38:21,768 - INFO ->>> --------------------------------------------------------------------------------
-2025-03-27 19:38:21,768 - INFO ->>> Starting Project ...
-2025-03-27 19:38:21,768 - INFO ->>> Generating "10000" Synthetic Patient Data ...
-2025-03-27 19:38:26,037 - INFO ->>> Dataset with 10000 records generated and saved to synthetic_patient_data.csv!
-2025-03-27 19:38:51,908 - INFO ->>> Best Parameters: {'estimator__max_depth': 7, 'estimator__min_samples_leaf': 7, 'estimator__min_samples_split': 10, 'estimator__n_estimators': 100}
-2025-03-27 19:39:02,433 - INFO ->>> Cross-Validation F1 Score: 0.95 (�0.01)
-2025-03-27 19:39:02,643 - INFO ->>> Training F1 Score: 0.95
-2025-03-27 19:39:02,741 - INFO ->>> Test Accuracy: 0.88
-2025-03-27 19:39:02,742 - INFO ->>> Test F1 Score: 0.94
-2025-03-27 19:39:02,742 - INFO ->>> Test Classification Report:
-2025-03-27 19:39:02,743 - INFO ->>>                     precision    recall  f1-score   support
+2025-04-23 14:53:01,097 - INFO -->> Starting Project ...
+2025-04-23 14:53:01,113 - INFO -->> Generating "15000" Synthetic Patient Data ...
+2025-04-23 14:53:07,810 - INFO -->> Dataset with 15000 records generated and saved to data/synthetic_patient_data.csv!
+2025-04-23 14:53:08,451 - INFO -->> Starting Visual EDA Analysis...
+2025-04-23 14:53:08,842 - INFO -->> Saved Age-Distribution Plot to output_images/eda directory
+2025-04-23 14:53:08,974 - INFO -->> Saved Gender-Distribution Plot to output_images/eda directory
+2025-04-23 14:53:09,180 - INFO -->> Saved Disease-Distribution Plot to output_images/eda directory
+2025-04-23 14:53:09,313 - INFO -->> Saved Heatmap Plot to output_images/eda directory
+2025-04-23 14:53:09,431 - INFO -->> Saved Dr_workload Plot to output_images/eda directory
+2025-04-23 14:53:09,473 - INFO -->> Stoped Visual EDA Analysis Successfully.
+2025-04-23 14:53:09,473 - INFO -->> Splitting data into training and testing sets...
+2025-04-23 14:53:09,481 - INFO -->> Data split completed.
+2025-04-23 14:53:09,481 - INFO -->> Starting GridSearchCV for hyperparameter tuning...
+2025-04-23 14:53:09,481 - INFO -->> Starting hyperparameter tuning using GridSearchCV
+2025-04-23 14:53:52,931 - INFO -->> GridSearchCV Completed. Best Parameters: {'estimator__max_depth': 7, 'estimator__min_samples_leaf': 5, 'estimator__min_samples_split': 10, 'estimator__n_estimators': 100}
+2025-04-23 14:53:52,931 - INFO -->> Best Parameters: {'estimator__max_depth': 7, 'estimator__min_samples_leaf': 5, 'estimator__min_samples_split': 10, 'estimator__n_estimators': 100}
+2025-04-23 14:53:52,931 - INFO -->> Grid search completed.
+2025-04-23 14:53:52,931 - INFO -->> Performing cross-validation...
+2025-04-23 14:54:09,066 - INFO -->> Cross-Validation F1 Score: 0.92 (�0.02)
+2025-04-23 14:54:09,066 - INFO -->> Cross-validation completed.
+2025-04-23 14:54:09,066 - INFO -->> Evaluating training and test performance...
+2025-04-23 14:54:09,378 - INFO -->> Training F1 Score: 0.96
+2025-04-23 14:54:09,478 - INFO -->> Test Accuracy: 0.91
+2025-04-23 14:54:09,478 - INFO -->> Test F1 Score: 0.96
+2025-04-23 14:54:09,478 - INFO -->> Test Classification Report:
+2025-04-23 14:54:09,478 - INFO -->> 
+                    precision    recall  f1-score   support
 
-      Cardiologist       0.92      0.88      0.90       544
-     Dermatologist       1.00      1.00      1.00       161
-   Endocrinologist       0.94      1.00      0.97       251
-Gastroenterologist       0.98      0.98      0.98       207
-       Neurologist       0.78      1.00      0.88       204
-      Psychiatrist       0.88      1.00      0.94       145
-     Pulmonologist       0.91      1.00      0.96       393
-    Rheumatologist       1.00      1.00      1.00       173
+      Cardiologist       1.00      0.87      0.93       862
+     Dermatologist       1.00      1.00      1.00       262
+   Endocrinologist       0.96      1.00      0.98       397
+Gastroenterologist       1.00      1.00      1.00       227
+       Neurologist       0.94      1.00      0.97       292
+      Psychiatrist       0.99      1.00      0.99       227
+     Pulmonologist       0.87      0.93      0.90       588
+    Rheumatologist       1.00      1.00      1.00       260
 
-         micro avg       0.92      0.97      0.94      2078
-         macro avg       0.93      0.98      0.95      2078
-      weighted avg       0.92      0.97      0.94      2078
-       samples avg       0.95      0.98      0.96      2078
+         micro avg       0.96      0.95      0.96      3115
+         macro avg       0.97      0.97      0.97      3115
+      weighted avg       0.96      0.95      0.96      3115
+       samples avg       0.97      0.97      0.96      3115
 
-2025-03-27 19:39:02,922 - INFO ->>> Model and preprocessing objects saved!
-2025-03-27 19:39:02,922 - INFO ->>> Successfully Completed Model Training and Testing...
+2025-04-23 14:54:09,597 - INFO -->> Evaluation completed. Saving model...
+2025-04-23 14:54:09,597 - INFO -->> Model and preprocessing objects saved to 'models' directory!
+2025-04-23 14:54:09,597 - INFO -->> Successfully Completed Model Training and Testing.
 
-2025-03-27 19:39:11,958 - INFO ->>> Starting patient appointment demo...
-2025-03-27 19:39:12,881 - INFO ->>> Predicted Doctors: ['Cardiologist']
-2025-03-27 19:39:12,918 - INFO ->>> Appointment Details:
-2025-03-27 19:39:12,918 - INFO ->>> Patient_Name: Mary Johnson
-2025-03-27 19:39:12,918 - INFO ->>> Required_Doctors: ['Cardiologist']
-2025-03-27 19:39:12,918 - INFO ->>> Appointment_Date: 2025-03-27
-2025-03-27 19:39:12,918 - INFO ->>> Consultation_Type: In-person
-2025-03-27 19:39:12,918 - INFO ->>> Hospital_Clinic_Name: City Hospital
-2025-03-27 19:39:12,951 - INFO ->>> Predicted Doctors: ['Pulmonologist']
-2025-03-27 19:39:12,985 - INFO ->>> Appointment Details:
-2025-03-27 19:39:12,985 - INFO ->>> Patient_Name: Robert Patel
-2025-03-27 19:39:12,985 - INFO ->>> Required_Doctors: ['Pulmonologist']
-2025-03-27 19:39:12,985 - INFO ->>> Appointment_Date: 2025-03-27
-2025-03-27 19:39:12,985 - INFO ->>> Consultation_Type: Online
-2025-03-27 19:39:12,985 - INFO ->>> Hospital_Clinic_Name: Health Clinic
-2025-03-27 19:39:13,034 - INFO ->>> Predicted Doctors: ['Neurologist']
-2025-03-27 19:39:13,068 - INFO ->>> Appointment Details:
-2025-03-27 19:39:13,068 - INFO ->>> Patient_Name: Sarah Kim
-2025-03-27 19:39:13,068 - INFO ->>> Required_Doctors: ['Neurologist']
-2025-03-27 19:39:13,068 - INFO ->>> Appointment_Date: 2025-03-27
-2025-03-27 19:39:13,068 - INFO ->>> Consultation_Type: Online
-2025-03-27 19:39:13,068 - INFO ->>> Hospital_Clinic_Name: Wellness Center
-2025-03-27 19:39:13,068 - INFO ->>> Successfully completed patient appointment demo ...
+2025-04-23 14:54:26,956 - INFO -->> Starting patient appointment demo...
+2025-04-23 14:54:26,956 - INFO -->> Scheduled appointments for patients across various age groups.
+
+
+2025-04-23 14:58:21,157 - INFO -->> MAKING APPOINMENT DEMO - Client Part
+
+
+2025-04-23 14:58:21,157 - INFO -->> Starting patient appointment demo...
+2025-04-23 14:58:21,157 - INFO -->> Scheduled appointments for patients across various age groups.
+2025-04-23 14:58:21,912 - INFO -->> 
+
+Predicted Doctors: ['Cardiologist']
+2025-04-23 14:58:21,954 - INFO -->> Appointment Details:
+2025-04-23 14:58:21,955 - INFO -->> Patient_Name: Mary Johnson
+2025-04-23 14:58:21,955 - INFO -->> Required_Doctors: ['Cardiologist']
+2025-04-23 14:58:21,955 - INFO -->> Appointment_Date: 2025-04-23
+2025-04-23 14:58:21,955 - INFO -->> Consultation_Type: In-person
+2025-04-23 14:58:21,955 - INFO -->> Hospital_Clinic_Name: City Hospital
+2025-04-23 14:58:21,994 - INFO -->> 
+
+Predicted Doctors: ['Pulmonologist']
+2025-04-23 14:58:22,030 - INFO -->> Appointment Details:
+2025-04-23 14:58:22,030 - INFO -->> Patient_Name: Robert Patel
+2025-04-23 14:58:22,030 - INFO -->> Required_Doctors: ['Pulmonologist']
+2025-04-23 14:58:22,030 - INFO -->> Appointment_Date: 2025-04-23
+2025-04-23 14:58:22,030 - INFO -->> Consultation_Type: Online
+2025-04-23 14:58:22,030 - INFO -->> Hospital_Clinic_Name: Health Clinic
+2025-04-23 14:58:22,076 - INFO -->> 
+
+Predicted Doctors: ['Neurologist']
+2025-04-23 14:58:22,114 - INFO -->> Appointment Details:
+2025-04-23 14:58:22,114 - INFO -->> Patient_Name: Sarah Kim
+2025-04-23 14:58:22,114 - INFO -->> Required_Doctors: ['Neurologist']
+2025-04-23 14:58:22,114 - INFO -->> Appointment_Date: 2025-04-23
+2025-04-23 14:58:22,114 - INFO -->> Consultation_Type: Online
+2025-04-23 14:58:22,114 - INFO -->> Hospital_Clinic_Name: Wellness Center
+2025-04-23 14:58:22,114 - INFO -->> Successfully completed patient appointment demo ...
 
 </pre>
 

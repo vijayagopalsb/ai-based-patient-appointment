@@ -114,7 +114,9 @@ if __name__ == "__main__":
         }
     ]
     
+    logger.info("MAKING APPOINMENT DEMO - Client Part\n\n")
     logger.info(f"Starting patient appointment demo...")
+    logger.info("Scheduled appointments for patients across various age groups.")
     
     # Create an instance of the predictor and test it
     predictor = AppointmentPredictor(model_path=Config.MODEL_PATH_NAME,preprocessing_path=Config.PREPROCESSING_OBJECTS_PATH)
