@@ -52,7 +52,7 @@ class PatientDataGenerator:
         self.disease_symptoms_map = {
             "Hypertension": ["headache", "dizziness", "blurred vision"],
             "Diabetes": ["increased thirst", "frequent urination", "fatigue"],
-            "Asthma": ["shortness of breath", "wheezing", "chest tightness"],
+            "Asthma": ["wheezing", "difficulty breathing", "shortness of breath", "chest tightness"],
             "Migraine": ["severe headache", "nausea", "sensitivity to light"],
             "Arthritis": ["joint pain", "stiffness", "swelling"],
             "Heart Disease": ["chest pain", "shortness of breath", "fatigue"],

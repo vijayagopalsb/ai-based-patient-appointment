@@ -15,7 +15,7 @@ import os
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.multioutput import MultiOutputClassifier
 from sklearn.model_selection import train_test_split, GridSearchCV, cross_val_score
-from sklearn.metrics import classification_report, accuracy_score
+from sklearn.metrics import classification_report, accuracy_score, hamming_loss, precision_score, recall_score, f1_score
 
 # Import your preprocessor class
 #from ..preprocessor.data_preprocessor import DataPreprocessor
@@ -25,6 +25,7 @@ from sklearn.metrics import classification_report, accuracy_score
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 from preprocessor.data_preprocessor import DataPreprocessor  # Absolute import  
 from  utils.logging_config import logger
+from utils.config import Config
 
 class ModelTrainer:
     """
@@ -86,15 +87,37 @@ class ModelTrainer:
         # Calculate micro-averaged F1 score for training data, handling zero division
         train_f1 = classification_report(y_train, y_train_pred, output_dict=True, zero_division=0)['micro avg']['f1-score']
         logger.info(f"Training F1 Score: {train_f1:.2f}")
-
+        logger.info("=============================================================")
         # --- Test Performance ---
         # Predict on the test set to evaluate generalization
         y_pred = model.predict(X_test)
+        # Subset Accuracy (Exact Match)
         # Calculate accuracy (exact match across all labels)
-        accuracy = accuracy_score(y_test, y_pred)
+        subset_accuracy = accuracy_score(y_test, y_pred)
+        logger.info(f"Subset Accuracy (Exact Match Ratio): {subset_accuracy:.2f}")
+
+        # Hamming Loss
+        hamming = hamming_loss(y_test, y_pred)
+        logger.info(f"Hamming Loss: {hamming:.4f} (lower is better)")
+
+        # Micro-averaged Precision, Recall, F1
+        precision = precision_score(y_test, y_pred, average='micro', zero_division=0)
+        recall = recall_score(y_test, y_pred, average='micro', zero_division=0)
+        f1 = f1_score(y_test, y_pred, average='micro', zero_division=0)
+
+        logger.info(f"Micro-Averaged Precision: {precision:.2f}")
+        logger.info(f"Micro-Averaged Recall: {recall:.2f}")
+        logger.info(f"Micro-Averaged F1 Score: {f1:.2f}")
+
+        # Detailed Report per Doctor
+        logger.info("Detailed Classification Report per Doctor:")
+        logger.info("\n" + classification_report(y_test, y_pred, target_names=y.columns, zero_division=0))
+
+        logger.info("=============================================================")
+
         # Calculate micro-averaged F1 score for test data
         test_f1 = classification_report(y_test, y_pred, output_dict=True, zero_division=0)['micro avg']['f1-score']
-        logger.info(f"Test Accuracy: {accuracy:.2f}")
+        logger.info(f"Test Accuracy: {subset_accuracy:.2f}")
         logger.info(f"Test F1 Score: {test_f1:.2f}")
         # Print detailed classification report for each doctor specialization
         logger.info("Test Classification Report:")
@@ -124,7 +147,7 @@ class ModelTrainer:
 if __name__ == "__main__":
     
     # Load synthetic data and preprocess it (assuming prior preprocessing)
-    df = pd.read_csv("synthetic_patient_data.csv")
+    df = pd.read_csv(Config.SYNTHETIC_DATA)
     
     data_preprocessor = DataPreprocessor()
     X, y, scaler, tfidf, le_dict, selector, all_doctors = data_preprocessor.preprocess_data(df)
