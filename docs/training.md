@@ -18,11 +18,11 @@ The project employs a **multi-label classification model** to predict the requir
 
 ---
 
-## ⚙️ Hyperparameter Tuning
+## Hyperparameter Tuning
 
 The model uses **GridSearchCV** for hyperparameter tuning with **5-fold cross-validation**.
 
-### 🔍 Parameter Grid:
+### Parameter Grid:
 
 | Parameter                | Values                |
 |--------------------------|-----------------------|
