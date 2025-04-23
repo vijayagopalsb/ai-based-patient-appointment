@@ -86,6 +86,6 @@ Run the **main pipeline** from the project root:
 ```bash
 python model_main.py
 
+```
 ---
-
 [Back to Main README](../README.md)
