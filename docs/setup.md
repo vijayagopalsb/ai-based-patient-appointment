@@ -54,7 +54,7 @@ pip install -r requirements.txt
 From the project root directory:
 
 ```bash
-python main.py
+python model_main.py
 
 ```
 
