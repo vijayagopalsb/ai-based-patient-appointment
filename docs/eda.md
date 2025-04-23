@@ -1,4 +1,4 @@
-[⬅ Back to Main README](../README.md)
+[Back to Main README](../README.md)
 
 --- 
 
@@ -69,4 +69,4 @@ The synthetic_patient_data.csv file includes:
 
 ---
 
-[⬅ Back to Main README](../README.md)
+[Back to Main README](../README.md)
