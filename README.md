@@ -5,12 +5,13 @@
 [![Python Version](https://img.shields.io/badge/python-3.8%2B-blue)](https://www.python.org/downloads/)
 [![License](https://img.shields.io/github/license/vijayagopalsb/ai-based-patient-appointment)](https://github.com/vijayagopalsb/ai-based-patient-appointment/blob/main/LICENSE)
 [![Last Commit](https://img.shields.io/github/last-commit/vijayagopalsb/ai-based-patient-appointment)](https://github.com/vijayagopalsb/ai-based-patient-appointment/commits/main)
-![Issues](https://img.shields.io/github/issues/vijayagopalsb/ai-based-patient-appointment)
-![Pull Requests](https://img.shields.io/github/issues-pr/vijayagopalsb/ai-based-patient-appointment)
-![Forks](https://img.shields.io/github/forks/vijayagopalsb/ai-based-patient-appointment?style=social)
-![Stars](https://img.shields.io/github/stars/vijayagopalsb/ai-based-patient-appointment?style=social)
-![Contributions Welcome](https://img.shields.io/badge/contributions-welcome-brightgreen)
-![Made with ML](https://img.shields.io/badge/Made%20with-ML-blue)
+[![Issues](https://img.shields.io/github/issues/vijayagopalsb/ai-based-patient-appointment)](https://github.com/vijayagopalsb/ai-based-patient-appointment/issues)
+[![Pull Requests](https://img.shields.io/github/issues-pr/vijayagopalsb/ai-based-patient-appointment)](https://github.com/vijayagopalsb/ai-based-patient-appointment/pulls)
+[![Forks](https://img.shields.io/github/forks/vijayagopalsb/ai-based-patient-appointment?style=social)](https://github.com/vijayagopalsb/ai-based-patient-appointment/network/members)
+[![Stars](https://img.shields.io/github/stars/vijayagopalsb/ai-based-patient-appointment?style=social)](https://github.com/vijayagopalsb/ai-based-patient-appointment/stargazers)
+[![Contributions Welcome](https://img.shields.io/badge/contributions-welcome-brightgreen)](https://github.com/vijayagopalsb/ai-based-patient-appointment/issues)
+[![Made with ML](https://img.shields.io/badge/Made%20with-ML-blue)](https://github.com/vijayagopalsb/ai-based-patient-appointment)
+
 
 
 ## Overview
