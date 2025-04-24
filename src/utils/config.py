@@ -18,3 +18,6 @@ class Config:
     MODEL_PATH_NAME="models/trained_appointment_model.pkl"
 
     PREPROCESSING_OBJECTS_PATH = "models/preprocessing_objects.pkl"
+
+    # Visual Evaluation csv data
+    TRAINING_EVALUATION_DATA = "data/training_metrics.csv"

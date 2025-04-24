@@ -26,6 +26,7 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 from preprocessor.data_preprocessor import DataPreprocessor  # Absolute import  
 from  utils.logging_config import logger
 from utils.config import Config
+from utils.model_evaluations  import save_metrics, get_next_run_id, plot_training_metrics, training_metric_summary, dual_axis_hamming_plot
 
 class ModelTrainer:
     """
@@ -65,7 +66,7 @@ class ModelTrainer:
         
         logger.info("Starting GridSearchCV for hyperparameter tuning...")
         # Perform grid search with 5-fold cross-validation, optimizing for micro F1 score
-        grid_search = GridSearchCV(model, param_grid, cv=5, scoring='f1_micro', n_jobs=-1, verbose=2)
+        grid_search = GridSearchCV(model, param_grid, cv=5, scoring='f1_micro', n_jobs=-1, verbose=0)
         logger.info("Starting hyperparameter tuning using GridSearchCV")
         grid_search.fit(X_train, y_train)  # Fit the grid search to find the best model
 
@@ -113,6 +114,12 @@ class ModelTrainer:
         logger.info("Detailed Classification Report per Doctor:")
         logger.info("\n" + classification_report(y_test, y_pred, target_names=y.columns, zero_division=0))
 
+        file_path = Config.TRAINING_EVALUATION_DATA
+        run_id = get_next_run_id(file_path)
+        save_metrics(run_id=run_id, subset_acc=subset_accuracy, hamming=hamming, precision=precision, recall=recall, f1=f1)
+        plot_training_metrics(Config.TRAINING_EVALUATION_DATA)
+        training_metric_summary(Config.TRAINING_EVALUATION_DATA)
+        dual_axis_hamming_plot(Config.TRAINING_EVALUATION_DATA)
         logger.info("=============================================================")
 
         # Calculate micro-averaged F1 score for test data

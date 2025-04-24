@@ -92,6 +92,14 @@ if __name__ == "__main__":
     plot_disease_distribution()
     plot_correlation_heatmap()
     plot_doctor_workload()
+
+
+def run_eda():
+    plot_age_distribution()
+    plot_gender_distribution()
+    plot_disease_distribution()
+    plot_correlation_heatmap()
+    plot_doctor_workload()
     
 # --- EDA (Optional Visualization) ---
 def plot_doctor_distribution(y):

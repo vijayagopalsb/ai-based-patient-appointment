@@ -15,6 +15,7 @@ import pandas as pd
 import random
 from faker import Faker
 
+
 # Import Logger
 from src.utils.logging_config import logger
 
@@ -114,7 +115,6 @@ class PatientDataGenerator:
             possible_symptoms = self.disease_symptoms_map[disease]
             symptoms = ", ".join(random.sample(possible_symptoms, k=min(3, len(possible_symptoms))))
             # symptoms = self.faker.sentence(nb_words=6)  # Random 6-word symptom description
-            logger.info(symptoms)
             disease_severity_level = random.choice(self.severity_levels)  # Severity level
             diagnosis_date = self.faker.date_this_decade()  # Random date in the last decade
             lab_test_results = random.choice(["Normal", "Abnormal", "Borderline"])  # Lab test outcome

@@ -7,12 +7,7 @@ from src.trainer.model_trainer import  ModelTrainer
 from src.utils.logging_config import logger
 from src.utils.config import Config
 
-def run_eda():
-    eda_analysis.plot_age_distribution()
-    eda_analysis.plot_gender_distribution()
-    eda_analysis.plot_disease_distribution()
-    eda_analysis.plot_correlation_heatmap()
-    eda_analysis.plot_doctor_workload()
+
 
 # Execute all EDA functions
 if __name__ == "__main__":
@@ -30,7 +25,7 @@ if __name__ == "__main__":
         X, y, scaler, tfidf, le_dict, selector, all_doctors = data_preprocessor.preprocess_data(dataframe)
 
         logger.info("Starting Visual EDA Analysis...")
-        run_eda()
+        eda_analysis.run_eda()
         logger.info("Stoped Visual EDA Analysis Successfully.")
 
         # Create an instance of the trainer
