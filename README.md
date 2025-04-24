@@ -4,7 +4,6 @@
 
 ![Python Version](https://img.shields.io/badge/python-3.8%2B-blue)
 [![License](https://img.shields.io/github/license/vijayagopalsb/ai-based-patient-appointment)](https://github.com/vijayagopalsb/ai-based-patient-appointment/blob/main/LICENSE)
-
 ![Last Commit](https://img.shields.io/github/last-commit/vijayagopalsb/ai-based-patient-appointment)
 ![Issues](https://img.shields.io/github/issues/vijayagopalsb/ai-based-patient-appointment)
 ![Pull Requests](https://img.shields.io/github/issues-pr/vijayagopalsb/ai-based-patient-appointment)
