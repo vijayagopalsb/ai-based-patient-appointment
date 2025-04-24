@@ -1,6 +1,19 @@
 # MediSched AI
 ## An AI-Based Patient Appointment System
 
+# 🏥 AI-Based Patient Appointment Scheduling
+
+![Python Version](https://img.shields.io/badge/python-3.8%2B-blue)
+![License](https://img.shields.io/github/license/vijayagopalsb/ai-based-patient-appointment)
+![Last Commit](https://img.shields.io/github/last-commit/vijayagopalsb/ai-based-patient-appointment)
+![Issues](https://img.shields.io/github/issues/vijayagopalsb/ai-based-patient-appointment)
+![Pull Requests](https://img.shields.io/github/issues-pr/vijayagopalsb/ai-based-patient-appointment)
+![Forks](https://img.shields.io/github/forks/vijayagopalsb/ai-based-patient-appointment?style=social)
+![Stars](https://img.shields.io/github/stars/vijayagopalsb/ai-based-patient-appointment?style=social)
+![Contributions Welcome](https://img.shields.io/badge/contributions-welcome-brightgreen)
+![Made with ML](https://img.shields.io/badge/Made%20with-ML-blue)
+
+
 ## Overview
 
 The **AI-Based Patient Appointment System** is a machine learning-driven solution that predicts the required medical specialists based on patient data. The system uses synthetic patient data, preprocesses it, trains a predictive model, and provides recommendations for doctor appointments. 

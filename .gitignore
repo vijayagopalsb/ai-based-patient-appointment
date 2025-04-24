@@ -173,4 +173,5 @@ cython_debug/
 # PyPI configuration file
 .pypirc
 
-
+# Ignore the temp_test
+temp_test/
