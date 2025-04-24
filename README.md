@@ -2,9 +2,9 @@
 
 ## An AI-Based Patient Appointment System
 
-![Python Version](https://img.shields.io/badge/python-3.8%2B-blue)
+[![Python Version](https://img.shields.io/badge/python-3.8%2B-blue)](https://www.python.org/downloads/)
 [![License](https://img.shields.io/github/license/vijayagopalsb/ai-based-patient-appointment)](https://github.com/vijayagopalsb/ai-based-patient-appointment/blob/main/LICENSE)
-![Last Commit](https://img.shields.io/github/last-commit/vijayagopalsb/ai-based-patient-appointment)
+[![Last Commit](https://img.shields.io/github/last-commit/vijayagopalsb/ai-based-patient-appointment)](https://github.com/vijayagopalsb/ai-based-patient-appointment/commits/main)
 ![Issues](https://img.shields.io/github/issues/vijayagopalsb/ai-based-patient-appointment)
 ![Pull Requests](https://img.shields.io/github/issues-pr/vijayagopalsb/ai-based-patient-appointment)
 ![Forks](https://img.shields.io/github/forks/vijayagopalsb/ai-based-patient-appointment?style=social)
