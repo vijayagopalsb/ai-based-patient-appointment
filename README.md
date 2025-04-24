@@ -1,7 +1,6 @@
 # MediSched AI
-## An AI-Based Patient Appointment System
 
-# 🏥 AI-Based Patient Appointment Scheduling
+## An AI-Based Patient Appointment System
 
 ![Python Version](https://img.shields.io/badge/python-3.8%2B-blue)
 ![License](https://img.shields.io/github/license/vijayagopalsb/ai-based-patient-appointment)
