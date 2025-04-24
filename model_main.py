@@ -13,14 +13,14 @@ from src.utils.config import Config
 if __name__ == "__main__":
 
     try:
-    
+
         logger.info("Starting Project ...")
 
         # Generate data
         logger.info(f"Generating \"{Config.NUMBER_OF_PATIENT_RECORDS}\" Synthetic Patient Data ...")
         patient_data_generator = PatientDataGenerator()
         dataframe = patient_data_generator.generate_synthetic_data(n_records=Config.NUMBER_OF_PATIENT_RECORDS,output_file=Config.SYNTHETIC_DATA )
-    
+
         data_preprocessor = DataPreprocessor()
         X, y, scaler, tfidf, le_dict, selector, all_doctors = data_preprocessor.preprocess_data(dataframe)
 
@@ -30,10 +30,10 @@ if __name__ == "__main__":
 
         # Create an instance of the trainer
         trainer = ModelTrainer()
-    
+
         # Train and evaluate the model
         model = trainer.train_and_evaluate(X, y, scaler, tfidf, le_dict, selector)
-    
+
         logger.info("Successfully Completed Model Training and Testing.\n")
     except Exception as e:
         logger.error(f"Pipeline failed due to: {e}")
