@@ -11,6 +11,7 @@
 [![Stars](https://img.shields.io/github/stars/vijayagopalsb/ai-based-patient-appointment?style=social)](https://github.com/vijayagopalsb/ai-based-patient-appointment/stargazers)
 [![Contributions Welcome](https://img.shields.io/badge/contributions-welcome-brightgreen)](https://github.com/vijayagopalsb/ai-based-patient-appointment/issues)
 [![Made with ML](https://img.shields.io/badge/Made%20with-ML-blue)](https://github.com/vijayagopalsb/ai-based-patient-appointment)
+[![Documentation](https://img.shields.io/badge/docs-available-blue)](https://github.com/vijayagopalsb/ai-based-patient-appointment/tree/main/docs)
 
 
 
