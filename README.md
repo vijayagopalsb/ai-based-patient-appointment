@@ -19,7 +19,7 @@ The **AI-Based Patient Appointment System** is a machine learning-driven solutio
 
 ## Documentation
 
-📚 **Documentation**
+**Documentation**
 - [Setup Guide](docs/setup.md)
 - [Exploratory Data Analysis](docs/eda.md)
 - [Model Training](docs/training.md)
